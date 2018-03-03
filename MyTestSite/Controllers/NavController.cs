@@ -11,8 +11,9 @@ namespace MyTestSite.Controllers
     public class NavController : Controller
     {
         // GET: Nav
-        public PartialViewResult Menu()
+        public PartialViewResult Menu(string category = null)
         {
+            ViewBag.SelectedCategory = category;
             var categories = Enum.GetNames(typeof(ProductCategory)).Cast<string>().OrderBy(x => x);
             Dictionary<string,string> model = new Dictionary<string, string>();
             foreach (var link in categories)

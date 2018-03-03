@@ -1,20 +1,20 @@
 ﻿@model Dictionary<string,string>
 @using MyTestSite.Models
 
-@Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-block btn-default btn-lg" })
+@Html.ActionLink("Home", "Index", "Home", null, new { @class = "btn btn-block btn-default btn-lg" + (null == ViewBag.SelectedCategory ? " btn-primary" : "")})
 
 
 @foreach (var link in Model)
 {
     @Html.RouteLink(link.Value, new
-{
-    controller = "Home",
-    action = "Index",
-    category = link.Key,
-    page = 1
-}, new
-{
-    @class = "btn btn-block btn-default btn-lg"
-})
+    {
+        controller = "Home",
+        action = "Index",
+        category = link.Key,
+        page = 1
+    }, new
+    {
+        @class = "btn btn-block btn-default btn-lg" + (link.Key == ViewBag.SelectedCategory ? " btn-primary" : "")
+    })
 }
 

@@ -12,21 +12,21 @@ namespace MyTestSite.Repos
     {
 
         public OrderDetailsRepo()
-    {
-        Table = Context.OrdersDetails;
+        {
+            Table = Context.OrdersDetails;
+        }
+
+
+        public Task<int> DeleteAsync(int id)
+        {
+            Context.Entry(new OrderDetails() { OrderDetailsId = id }).State = EntityState.Deleted;
+            return Context.SaveChangesAsync();
+        }
+
+        public int Delete(int id)
+        {
+            Context.Entry(new OrderDetails() { OrderDetailsId = id }).State = EntityState.Deleted;
+            return Context.SaveChanges();
+        }
     }
-
-
-    public Task<int> DeleteAsync(int id)
-    {
-        Context.Entry(new OrderDetails() { OrderDetailsId = id }).State = EntityState.Deleted;
-        return Context.SaveChangesAsync();
-    }
-
-    public int Delete(int id)
-    {
-        Context.Entry(new OrderDetails() { OrderDetailsId = id }).State = EntityState.Deleted;
-        return Context.SaveChanges();
-    }
-
 }
