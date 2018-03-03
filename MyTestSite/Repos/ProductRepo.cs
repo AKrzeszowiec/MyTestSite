@@ -58,6 +58,48 @@ namespace MyTestSite.Repos
             return Context.SaveChangesAsync();
         }
 
+        public List<Product> GetAll()
+        {
+            return Table.ToList();
+        }
+
+        public Product GetById(int? id)
+        {
+            return Table.Find(id);
+        }
+
+        public int Add(Product entity)
+        {
+            Context.Entry(entity).State = EntityState.Added;
+            return Context.SaveChanges();
+        }
+
+        public int AddRange(List<Product> entities)
+        {
+            Table.AddRange(entities);
+            return Context.SaveChanges();
+        }
+
+        public int Save(Product entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
+            return Context.SaveChanges();
+        }
+
+        public int Delete(Product entity)
+        {
+            Context.Entry(entity).State = EntityState.Deleted;
+            return Context.SaveChanges();
+        }
+
+
+        public int Delete(int id)
+        {
+            Context.Entry(new Product() { ProductId = id }).State = EntityState.Deleted;
+            return Context.SaveChanges();
+        }
+
+
         #region IDisposable Support
         private bool disposedValue = false; // To detect redundant calls
 
@@ -92,6 +134,8 @@ namespace MyTestSite.Repos
             // TODO: uncomment the following line if the finalizer is overridden above.
             // GC.SuppressFinalize(this);
         }
+
+        
         #endregion
     }
 }
