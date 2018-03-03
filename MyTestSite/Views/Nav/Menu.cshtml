@@ -1,0 +1,18 @@
+﻿@model Dictionary<string,string>
+@using MyTestSite.Models
+
+@Html.ActionLink("Home", "Index", "Admin", null, new { @class = "btn btn-block btn-default btn-lg" })
+@foreach (var link in Model)
+{
+
+    @Html.RouteLink(link.Value, new
+{
+    controller = "Admin",
+    action = "Index",
+    category = link.Key,
+    page = 1
+}, new
+{
+    @class = "btn btn-block btn-default btn-lg"
+})
+}

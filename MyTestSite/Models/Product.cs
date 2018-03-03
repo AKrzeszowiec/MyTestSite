@@ -30,9 +30,13 @@ namespace MyTestSite.Models
 
     public enum ProductCategory
     {
+        [Display(Name = "Potions")]
         potion,
+        [Display(Name = "Artefacts")]
         artefact,
+        [Display(Name ="Ointments")]
         ointment,
-        enchantedItem
+        [Display(Name = "Enchanted Items")]
+        enchantedItem,
     }
 }

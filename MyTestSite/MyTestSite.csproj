@@ -193,9 +193,11 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Migrations\201803030749309_InitialCreate.cs" />
     <Compile Include="Migrations\201803030749309_InitialCreate.Designer.cs">
       <DependentUpon>201803030749309_InitialCreate.cs</DependentUpon>
@@ -209,6 +211,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductsViewModelscs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\IDatabaseRepo.cs" />
     <Compile Include="Repos\ProductRepo.cs" />
@@ -276,6 +279,7 @@
     <Content Include="Views\Admin\Details.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Nav\Menu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

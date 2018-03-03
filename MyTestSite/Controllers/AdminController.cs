@@ -16,11 +16,24 @@ namespace MyTestSite.Controllers
     public class AdminController : Controller
     {
         private ProductRepo repo = new ProductRepo();
+        public int PageSize = 2;
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(ProductCategory? category, int page=1)
         {
-            return View(repo.GetAll());
+            var UnorderedProducts = repo.GetAll();
+            if (category!=null)
+            {
+                UnorderedProducts=UnorderedProducts.Where(p => p.Category == category.ToString()).ToList();
+            }
+            ProductsListViewModel model = new ProductsListViewModel
+            {
+                Products = UnorderedProducts.OrderBy(p => p.ProductId).Skip((page - 1) * PageSize).Take(PageSize),
+                PagingInfo = new PagingInfo { CurrentPage = page, ItemsPerPage = PageSize, TotalItems = UnorderedProducts.Count() },
+                CurrentCategory = category
+
+            };
+            return View(model);
         }
 
         // GET: Products/Details/5
