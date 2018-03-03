@@ -26,6 +26,8 @@ namespace MyTestSite.Models
         [Required]
         [StringLength(200)]
         public string Description { get; set; }
+
+        public ICollection<OrderDetails> OrdersDetails { get; set; }
     }
 
     public enum ProductCategory

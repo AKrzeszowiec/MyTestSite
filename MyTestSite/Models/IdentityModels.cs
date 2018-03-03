@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.Collections.Generic;
 
 namespace MyTestSite.Models
 {
@@ -16,6 +17,8 @@ namespace MyTestSite.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        public ICollection<Order> Orders { get; set; }
     }
 
 
@@ -24,7 +27,8 @@ namespace MyTestSite.Models
     {
 
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetails> OrdersDetails { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

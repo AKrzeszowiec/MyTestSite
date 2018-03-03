@@ -206,10 +206,20 @@
     <Compile Include="Migrations\201803031011033_Prodcuts.Designer.cs">
       <DependentUpon>201803031011033_Prodcuts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803032118197_addedOrders.cs" />
+    <Compile Include="Migrations\201803032118197_addedOrders.Designer.cs">
+      <DependentUpon>201803032118197_addedOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201803032126199_addedOrderDetails.cs" />
+    <Compile Include="Migrations\201803032126199_addedOrderDetails.Designer.cs">
+      <DependentUpon>201803032126199_addedOrderDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductsViewModelscs.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -303,6 +313,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803031011033_Prodcuts.resx">
       <DependentUpon>201803031011033_Prodcuts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803032118197_addedOrders.resx">
+      <DependentUpon>201803032118197_addedOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803032126199_addedOrderDetails.resx">
+      <DependentUpon>201803032126199_addedOrderDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
