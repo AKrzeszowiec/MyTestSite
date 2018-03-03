@@ -4,8 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using MyTestSite.Models;
-using System.Reflection;
-using System.ComponentModel.DataAnnotations;
 using MyTestSite.Helpers;
 
 namespace MyTestSite.Controllers
@@ -23,8 +21,12 @@ namespace MyTestSite.Controllers
                 string name = myEnum.GetDisplayName();
                 model.Add(link, name);
             }
+            {
+                return PartialView(model);
+            }
 
-            return PartialView(model);
+
+
 
         }
     }
