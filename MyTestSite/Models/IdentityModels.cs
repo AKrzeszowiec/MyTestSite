@@ -18,16 +18,6 @@ namespace MyTestSite.Models
         }
     }
 
-    //public class ApplicationRole : IdentityRole
-    //{
-    //    public async Task<IdentityResult> GenerateRoleIdentityAsync(RoleManager<ApplicationRole> manager)
-    //    {
-    //        // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-    //        var roleIdentity = await manager.CreateAsync(this);
-    //        // Add custom user claims here
-    //        return roleIdentity;
-    //    }
-    //}
 
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -153,8 +153,11 @@ namespace MyTestSite.Controllers
             {
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                
                 if (result.Succeeded)
                 {
+                    ApplicationUser currentUser = await UserManager.FindByEmailAsync(user.Email);
+                    await UserManager.AddToRoleAsync(currentUser.Id, "User");
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
