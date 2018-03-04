@@ -12,7 +12,7 @@ namespace MyTestSite.Controllers
     public class HomeController : Controller
     {
         private ProductRepo repo = new ProductRepo();
-        public int PageSize = 2;
+        public int PageSize = 5;
         public ActionResult Index(ProductCategory? category, int page = 1)
         {
             var UnorderedProducts = repo.GetAll();
