@@ -18,9 +18,9 @@ namespace MyTestSite.Models
             return userIdentity;
         }
 
-        public string ShippingId { get; set; }
+        public int? ShippingId { get; set; }
 
-        public ShippingDetails ShippingDetails { get; set; }
+        public virtual ShippingDetails ShippingDetails { get; set; }
 
 
         public ICollection<Order> Orders { get; set; }

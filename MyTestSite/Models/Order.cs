@@ -15,7 +15,7 @@ namespace MyTestSite.Models
 
         public decimal Bill { get; set; }
 
-        public string ShippingId { get; set; }
+        public int ShippingId { get; set; }
 
         public ApplicationUser ApplicationUser { get; set; }
 
