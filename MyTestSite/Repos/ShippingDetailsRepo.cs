@@ -28,5 +28,6 @@ namespace MyTestSite.Repos
             Context.Entry(new ShippingDetails() { ShippingId = id }).State = EntityState.Deleted;
             return Context.SaveChanges();
         }
+
     }
 }

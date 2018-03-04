@@ -7,6 +7,8 @@ using MyTestSite.Models;
 using System.Text;
 using System.Reflection;
 using System.ComponentModel.DataAnnotations;
+using System.Security.Principal;
+using Microsoft.AspNet.Identity;
 
 namespace MyTestSite.Helpers
 {
@@ -43,6 +45,16 @@ namespace MyTestSite.Helpers
             }
 
             return item.ToString();
+        }
+
+        public static int? GetShippingDetails(this IIdentity identity)
+        {
+            var userId = identity.GetUserId();
+            using (var context = new ApplicationDbContext())
+            {
+                var user = context.Users.FirstOrDefault(u => u.Id == userId);
+                return user.ShippingId;
+            }
         }
     }
 }

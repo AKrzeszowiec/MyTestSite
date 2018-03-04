@@ -62,7 +62,7 @@ namespace MyTestSite.Repos
 
         public int Add(T entity)
         {
-            Context.Entry(entity).State = EntityState.Added;
+            Table.Add(entity);
             return Context.SaveChanges();
         }
 

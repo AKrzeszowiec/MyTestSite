@@ -5,12 +5,15 @@ using System.Web;
 using System.Web.Mvc;
 using MyTestSite.Models;
 using MyTestSite.Repos;
+using Microsoft.AspNet.Identity;
+using MyTestSite.Helpers;
 
 namespace MyTestSite.Controllers
 {
     public class CartController : Controller
     {
         private ProductRepo repo = new ProductRepo();
+        private OrderProcessor orderProcessor = new OrderProcessor();
         // GET: Cart
         public RedirectToRouteResult AddToCart(int productId, string returnUrl)
         {
@@ -47,9 +50,44 @@ namespace MyTestSite.Controllers
             return PartialView(cart);
         }
 
+        [Authorize]
         public ViewResult Checkout()
         {
-            return View(new ShippingDetails());
+            int? shippingId = User.Identity.GetShippingDetails();
+            ShippingDetails shippingDetails = new ShippingDetails();
+            if (shippingId != null)
+            {
+                using (ShippingDetailsRepo shipRepo = new ShippingDetailsRepo())
+                {
+                    shippingDetails = shipRepo.GetById(shippingId);
+                }
+
+            }
+ 
+            return View(shippingDetails);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ViewResult Checkout(ShippingDetails shippingDetails)
+        {
+            Cart cart = GetCart();
+            if (cart.Lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "Sorry, your cart is empty!");
+            }
+            if (ModelState.IsValid)
+            {
+                int? shippingId = User.Identity.GetShippingDetails();
+                string userId = User.Identity.GetUserId();
+                orderProcessor.ProcessOrder(cart, shippingDetails, userId, shippingId);
+                cart.Clear();
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
         }
 
 
