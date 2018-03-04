@@ -18,6 +18,11 @@ namespace MyTestSite.Models
             return userIdentity;
         }
 
+        public string ShippingId { get; set; }
+
+        public ShippingDetails ShippingDetails { get; set; }
+
+
         public ICollection<Order> Orders { get; set; }
     }
 
@@ -29,6 +34,7 @@ namespace MyTestSite.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<OrderDetails> OrdersDetails { get; set; }
+        public DbSet<ShippingDetails> ShippingsDetails { get; set; }
 
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)

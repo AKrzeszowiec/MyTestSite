@@ -215,6 +215,10 @@
     <Compile Include="Migrations\201803032126199_addedOrderDetails.Designer.cs">
       <DependentUpon>201803032126199_addedOrderDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803041140125_ShippingDetails.cs" />
+    <Compile Include="Migrations\201803041140125_ShippingDetails.Designer.cs">
+      <DependentUpon>201803041140125_ShippingDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cart.cs" />
@@ -223,8 +227,10 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetails.cs" />
+    <Compile Include="Repos\OrderProcessor.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductsViewModelscs.cs" />
+    <Compile Include="Models\ShippingDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\BaseRepo.cs" />
     <Compile Include="Repos\IDatabaseRepo.cs" />
@@ -296,6 +302,8 @@
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Nav\Menu.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\Summary.cshtml" />
+    <Content Include="Views\Cart\Checkout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -325,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803032126199_addedOrderDetails.resx">
       <DependentUpon>201803032126199_addedOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803041140125_ShippingDetails.resx">
+      <DependentUpon>201803041140125_ShippingDetails.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

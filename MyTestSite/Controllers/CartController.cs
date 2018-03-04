@@ -22,14 +22,14 @@ namespace MyTestSite.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectResult RemoveFromCart(int productId, string returnUrl)
+        public RedirectToRouteResult RemoveFromCart(int productId, string returnUrl)
         {
             Product product = repo.GetById(productId);
             if (product != null)
             {
                 GetCart().RemoveLine(product);
             }
-            return Redirect(returnUrl);
+            return RedirectToAction("Index", new { returnUrl });
         }
 
         public ViewResult Index(string returnUrl)
@@ -40,6 +40,18 @@ namespace MyTestSite.Controllers
                 ReturnUrl = returnUrl
             });
         }
+
+        public PartialViewResult Summary()
+        {
+            Cart cart = GetCart();
+            return PartialView(cart);
+        }
+
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+
 
         private Cart GetCart()
         {
