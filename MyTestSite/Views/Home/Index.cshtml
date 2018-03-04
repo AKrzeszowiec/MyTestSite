@@ -46,11 +46,24 @@
             @if (User.IsInRole("Admin"))
             {
                 <td>
-                    @Html.ActionLink("Edit", "Edit", "Admin", new { id = item.ProductId }) |
-                    @Html.ActionLink("Details", "Details", "Admin", new { id = item.ProductId }) |
-                    @Html.ActionLink("Delete", "Delete", "Admin", new { id = item.ProductId })
+                    @Html.ActionLink("Edit", "Edit", "Admin", new { id = item.ProductId }, null) |
+                    @Html.ActionLink("Details", "Details", "Admin", new { id = item.ProductId }, null) |
+                    @Html.ActionLink("Delete", "Delete", "Admin", new { id = item.ProductId }, null)
                 </td>
             }
+            @if (!User.IsInRole("Admin"))
+            {
+
+                <td>
+                    @using(Html.BeginForm("AddToCart", "Cart"))
+                    {
+                        @Html.Hidden("productId", item.ProductId)
+                        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+                        <input type="submit" class="btn btn-success" value="Add to cart" />
+                    }
+                </td>
+            }
+
         </tr>
     }
 
